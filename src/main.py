@@ -11,6 +11,8 @@ def tranzact_execute(LINK):
 
 def five_operations(tmp_list):
     """Функция выводит последние 5 EXECUTED операций"""
+    if tmp_list == []:
+        return "operation list"
     date_list = []
     for dicts in tmp_list:
         if "state" not in dicts.keys():
@@ -21,7 +23,10 @@ def five_operations(tmp_list):
     return date_list[:5]
 
 
+
 def main(LINK):
+    if LINK == []:
+        return "empty list"
     tmp_list = tranzact_execute(LINK)
     ready_list = five_operations(tmp_list)
     for date in ready_list:
@@ -40,7 +45,7 @@ def main(LINK):
                 print(f"{date} {dicts['description']}\n"
                       f"{number_card} -> {dicts['to'][:4]} **{dicts['to'][-4:]}\n"
                       f"{dicts['operationAmount']['amount']} {dicts['operationAmount']['currency']['name']}\n")
-
+    return "main complited"
 
 if __name__ == "__main__":
     LINK = "..\operations.json"
