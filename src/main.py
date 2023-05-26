@@ -8,6 +8,7 @@ def tranzact_execute(LINK):
         list_json = json.loads(file.read())
     return list_json
 
+
 def five_operations(tmp_list):
     """Функция выводит последние 5 EXECUTED операций"""
     date_list = []
@@ -28,22 +29,17 @@ def main(LINK):
             if "date" not in dicts.keys():
                 continue
             if date == dicts["date"]:
-                date = date[5:10].replace('-', '.')+'.'+ date[:4]
+                date = date[5:10].replace('-', '.') + '.' + date[:4]
                 if "from" not in dicts.keys():
                     number_card = "non card"
                 else:
-                    number_card = " ".join(dicts["from"].split()[:-1] + [dicts["from"].split()[-1][:4] + " " + dicts["from"].split()[-1][4:6] + "**" + "****" + dicts["from"].split()[-1][-4:]])
+                    number_card = " ".join(dicts["from"].split()[:-1] + [
+                        dicts["from"].split()[-1][:4] + " " + dicts["from"].split()[-1][4:6] + "**" + "****" +
+                        dicts["from"].split()[-1][-4:]])
 
                 print(f"{date} {dicts['description']}\n"
                       f"{number_card} -> {dicts['to'][:4]} **{dicts['to'][-4:]}\n"
                       f"{dicts['operationAmount']['amount']} {dicts['operationAmount']['currency']['name']}\n")
-
-
-
-
-
-
-
 
 
 if __name__ == "__main__":
